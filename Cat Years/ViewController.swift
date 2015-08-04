@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var catAgeTextField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +25,18 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func findAge(sender: AnyObject) {
+        if(catAgeTextField.text!.isEmpty) {
+            resultLabel.text = "Enter an age"
+            return
+        }
+        
+        if let age = Int(catAgeTextField.text!) {
+            let catAge = age * 7
+            resultLabel.text = "Your cat is \(catAge) years old"
+        } else {
+            resultLabel.text = "Age is invalid"
+        }
+    }
 }
 
